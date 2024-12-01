@@ -59,7 +59,7 @@ y_test = scaled_test['label'].values
 
 
 # API endpoint
-url = 'http://localhost:5000/predict'
+url = 'http://104.197.81.251:5000/predict'
 
 # Make a POST request
 start_time = time.time() 

@@ -1,13 +1,17 @@
 from flask import Flask, request, jsonify
 import numpy as np
 from joblib import load  # Assuming your `loaded_model` is stored as a pickle file
+import time
 
 # Initialize Flask app
 app = Flask(__name__)
 
 # Load the trained model
-with open('NSL-KDD/linear_svc_model.pkl', 'rb') as f:  # Replace 'model.pkl' with your model file path
+with open('NSL-KDD/linear_svc_model.pkl', 'rb') as f:
+    start_time = time.time()   # Replace 'model.pkl' with your model file path
     loaded_model = load(f)
+    end_time = time.time()
+    print(f"API call took {end_time - start_time:.4f} seconds")
 
 @app.route('/predict', methods=['POST'])
 def predict():
